@@ -14,7 +14,7 @@ loadProducts('https://organic-server.vercel.app/products');
 
 // show all product in UI
 const showProducts = (products) => {
-   
+
    setInnerText('total_products', products.length);
 
    document.getElementById("all-products").innerHTML = "";
@@ -63,8 +63,8 @@ const showProductDetailsInModal = (product_details) => {
    console.log(product_details);
    setInnerText('exampleModalLabel', product_details.name);
    setInnerText('productId', product_details.price);
-   
-   
+
+
 };
 
 const getInputValue = (id) => {
@@ -83,10 +83,10 @@ const updatePrice = (id, value) => {
 
 // set innerText function
 const setInnerText = (id, value) => {
-   if(typeof value === "number" ){
+   if (typeof value === "number") {
       value = Math.round(value)
    }
-   
+
    document.getElementById(id).innerText = value;
 };
 
@@ -97,19 +97,19 @@ const updateTaxAndCharge = () => {
       setInnerText('delivery-charge', 60);
       setInnerText('total-tax', priceConverted * 0.4);
    }
-  else if (priceConverted > 400) {
+   else if (priceConverted > 400) {
       setInnerText('delivery-charge', 50);
       setInnerText('total-tax', priceConverted * 0.3);
    }
-  else if (priceConverted > 200) {
+   else if (priceConverted > 200) {
       setInnerText('delivery-charge', 30);
       setInnerText('total-tax', priceConverted * 0.2);
    }
-   else{
+   else {
       setInnerText('delivery-charge', 5);
    }
- 
-}; 
+
+};
 
 //grandTotal update function
 const updateTotal = () => {
@@ -120,13 +120,5 @@ const updateTotal = () => {
    document.getElementById('total').innerText = grandTotal.toFixed(2);
 };
 
-// search by category
-document.getElementById("search-btn").addEventListener("click", function () {
-   const inputField = document.getElementById("input-value").value;
-   const searchedProduct = arr[0].filter((p) =>
-     p.name.toLowerCase().includes(inputField.toLowerCase())
-   );
-   showProducts(searchedProduct);
- });
 
 
