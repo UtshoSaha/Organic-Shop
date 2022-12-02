@@ -9,7 +9,7 @@ const loadProducts = (url) => {
       });
 };
 
-loadProducts('https://organic-server.vercel.app/products');
+loadProducts('https://organic-server.vercel.app/product');
 
 
 // show all product in UI
@@ -29,7 +29,7 @@ const showProducts = (products) => {
     <img class="product-image" src=${image}></img>
       </div>
       <h3>${product.name}</h3>
-      <p>Price: $ ${product.price}  ${product.quantity}</p>
+      <p  >Price: $ ${product.price} ${product.quantity} </p>
       <h6>${product.description}<h6>
 
       <button onclick="showProductDetails(${product.id})" id="details-btn"    data-bs-toggle="modal"
@@ -38,8 +38,13 @@ const showProducts = (products) => {
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-warning border-0 w-100 rounded-0 bg-main py-2">Add to cart</button>
       `;
       document.getElementById('all-products').appendChild(div);
+
+   
+    
    }
 };
+
+
 
 let count = 0;
 
@@ -50,11 +55,17 @@ const addToCart = (id, price) => {
    updateTaxAndCharge();
    updateTotal()
    document.getElementById('total-Products').innerText = count;
+   
+   
+   localStorage.setItem('count', count)
+
+   
 };
+
 
 const showProductDetails = (product_id) => {
    // console.log(product_id);
-   fetch(`https://organic-server.vercel.app/product/${product_id}`)
+   fetch(`https://organic-server.vercel.app/${product_id}`)
       .then((res) => res.json())
       .then((data) => showProductDetailsInModal(data));
 };
@@ -62,9 +73,9 @@ const showProductDetails = (product_id) => {
 const showProductDetailsInModal = (product_details) => {
    console.log(product_details);
    setInnerText('exampleModalLabel', product_details.name);
-   setInnerText('productId', product_details.price);
-   
-   
+   setInnerText('productId', product_details.id);
+   setInnerText('modal_body', product_details.description);
+   setInnerText('rating', product_details.rating.rate);
 };
 
 const getInputValue = (id) => {
@@ -73,12 +84,16 @@ const getInputValue = (id) => {
    return converted;
 };
 
+
 // main price update function
 const updatePrice = (id, value) => {
    const convertedOldPrice = getInputValue(id);
    const convertPrice = parseFloat(value);
    const total = convertedOldPrice + convertPrice;
    document.getElementById(id).innerText = total.toFixed(2);
+   localStorage.setItem('price', (convertedOldPrice + convertPrice) )
+
+  
 };
 
 // set innerText function
@@ -87,8 +102,10 @@ const setInnerText = (id, value) => {
       value = Math.round(value)
    }
    
-   document.getElementById(id).innerText = value;
+ document.getElementById(id).innerText = value;
+ 
 };
+
 
 // update delivery charge and total Tax
 const updateTaxAndCharge = () => {
@@ -107,6 +124,7 @@ const updateTaxAndCharge = () => {
    }
    else{
       setInnerText('delivery-charge', 5);
+     
    }
  
 }; 
@@ -118,6 +136,8 @@ const updateTotal = () => {
       getInputValue('delivery-charge') +
       getInputValue('total-tax');
    document.getElementById('total').innerText = grandTotal.toFixed(2);
+   localStorage.setItem('total',grandTotal )
+
 };
 
 // search by category
@@ -128,5 +148,6 @@ document.getElementById("search-btn").addEventListener("click", function () {
    );
    showProducts(searchedProduct);
  });
+
 
 
