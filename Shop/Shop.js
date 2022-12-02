@@ -14,7 +14,7 @@ loadProducts('https://organic-server.vercel.app/product');
 
 // show all product in UI
 const showProducts = (products) => {
-   
+
    setInnerText('total_products', products.length);
 
    document.getElementById("all-products").innerHTML = "";
@@ -39,8 +39,8 @@ const showProducts = (products) => {
       `;
       document.getElementById('all-products').appendChild(div);
 
-   
-    
+
+
    }
 };
 
@@ -55,11 +55,11 @@ const addToCart = (id, price) => {
    updateTaxAndCharge();
    updateTotal()
    document.getElementById('total-Products').innerText = count;
-   
-   
+
+
    localStorage.setItem('count', count)
 
-   
+
 };
 
 
@@ -91,19 +91,19 @@ const updatePrice = (id, value) => {
    const convertPrice = parseFloat(value);
    const total = convertedOldPrice + convertPrice;
    document.getElementById(id).innerText = total.toFixed(2);
-   localStorage.setItem('price', (convertedOldPrice + convertPrice) )
+   localStorage.setItem('price', (convertedOldPrice + convertPrice))
 
-  
+
 };
 
 // set innerText function
 const setInnerText = (id, value) => {
-   if(typeof value === "number" ){
+   if (typeof value === "number") {
       value = Math.round(value)
    }
-   
- document.getElementById(id).innerText = value;
- 
+
+   document.getElementById(id).innerText = value;
+
 };
 
 
@@ -114,20 +114,20 @@ const updateTaxAndCharge = () => {
       setInnerText('delivery-charge', 60);
       setInnerText('total-tax', priceConverted * 0.4);
    }
-  else if (priceConverted > 400) {
+   else if (priceConverted > 400) {
       setInnerText('delivery-charge', 50);
       setInnerText('total-tax', priceConverted * 0.3);
    }
-  else if (priceConverted > 200) {
+   else if (priceConverted > 200) {
       setInnerText('delivery-charge', 30);
       setInnerText('total-tax', priceConverted * 0.2);
    }
-   else{
+   else {
       setInnerText('delivery-charge', 5);
-     
+
    }
- 
-}; 
+
+};
 
 //grandTotal update function
 const updateTotal = () => {
@@ -136,7 +136,7 @@ const updateTotal = () => {
       getInputValue('delivery-charge') +
       getInputValue('total-tax');
    document.getElementById('total').innerText = grandTotal.toFixed(2);
-   localStorage.setItem('total',grandTotal )
+   localStorage.setItem('total', grandTotal)
 
 };
 
@@ -144,10 +144,10 @@ const updateTotal = () => {
 document.getElementById("search-btn").addEventListener("click", function () {
    const inputField = document.getElementById("input-value").value;
    const searchedProduct = arr[0].filter((p) =>
-     p.name.toLowerCase().includes(inputField.toLowerCase())
+      p.name.toLowerCase().includes(inputField.toLowerCase())
    );
    showProducts(searchedProduct);
- });
+});
 
 
 
