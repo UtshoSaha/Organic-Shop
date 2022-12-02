@@ -13,14 +13,14 @@ document.getElementById('btn-submit').addEventListener('click', function () {
     console.log(email, password)
     // DANGER : DO NOT VERIFY email password on the client side
     // step 4: verify email and password
-    if (email === "utsa15-14237@diu.edu.bd" && password === 'utsa1234'){
+    if (email === "utsa15-14237@diu.edu.bd" && password === 'utsa1234') {
         // window.location.href = 'bank.html';
+        window.location.href = 'index.html';
+    }
+    else if (email === "nabid15-13826@diu.edu.bd" && password === 'nabid1234') {
         window.location.href = '../index.html';
     }
-    else if(email === "nabid15-13826@diu.edu.bd" && password === 'nabid1234'){
-        window.location.href = '../index.html';
-    }
-    else if(email === "fahim15-13734@diu.edu.bd" && password === 'fahim1234'){
+    else if (email === "fahim15-13734@diu.edu.bd" && password === 'fahim1234') {
         window.location.href = '../index.html';
     }
     else {
