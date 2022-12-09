@@ -65,7 +65,7 @@ const addToCart = (id, price) => {
 
 const showProductDetails = (product_id) => {
    // console.log(product_id);
-   fetch(`https://organic-server-saklainmostak1.vercel.app/products/${product_id}`)
+   fetch(`https://organic-server-saklainmostak1.vercel.app/${product_id}`)
       .then((res) => res.json())
       .then((data) => showProductDetailsInModal(data));
 };
