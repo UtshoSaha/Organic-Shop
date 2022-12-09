@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -7,7 +7,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Styles/nav.css">
     <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="login.css">
+</head>
+
+<body>
+   
+    <main>
+        <section class=" w-2/12 mx-auto mt-12 p-8 ">
+            <h3 class="text-3xl mb-4 text-center font-medium">Please Login</h3>
+            <div>
+                <input class=" block p-3 mb-2 border- border-solid w-full border-2 border-sky-500 px-3" type="email" name=""
+                    id="user-email" placeholder="Your Email">
+                <input class=" 
+                border- border-solid border-2 border-sky-500 
+                block p-3 mb-2 w-full px-3" type="password" name="" id="user-password" placeholder="Your Password">
+                <button id="btn-submit"
+                    class="bg-amber-600 px-8 py-2 text-white font-medium rounded-lg w-full hover:bg-sky-700">Submit</button>
+            </div>
+        </section>
+        <section>
+            
+        </section>
+    </main>
+    <script src="login.js"></script>
+</body>
+
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="    viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.7/firebase-auth.js"></script>
     <link rel="stylesheet" href="login.css">
+    <title>Login System</title>
 </head>
 
 <body>
@@ -20,12 +58,12 @@
                 <div>
                     <nav>
                         <ul>
-                            <li class="li"><a href="./index.html">Home</a></li>
+                            <li class="li"><a href="../index.html">Home</a></li>
                             <li><a href="Shop/Shop.html">Shop</a></li>
                             <li><a href="contact/contact.html">Contact</a></li>
                             <li class="btn">
                                 <div class="log-btn">
-                                    <a href="./login.html">Login</a>
+                                    <a href="../login.html">Login</a>
                                 </div>
                             </li>
                         </ul>
@@ -34,23 +72,16 @@
             </div>
         </section>
     </header>
-    <main>
-        <section class=" w-2/12 mx-auto mt-12 p-8 ">
-            <h3 class="text-3xl mb-4 text-center font-medium">Please Login</h3>
-            <div>
-                <input class=" block p-3 mb-2 border- border-solid w-full border-2 border-sky-500 px-3" type="email"
-                    name="" id="user-email" placeholder="Your Email">
-                <input class=" 
-                border- border-solid border-2 border-sky-500 
-                block p-3 mb-2 w-full px-3" type="password" name="" id="user-password" placeholder="Your Password">
-                <button id="btn-submit"
-                    class="bg-amber-600 px-8 py-2 text-white font-medium rounded-lg w-full hover:bg-sky-700">Submit</button>
-            </div>
-        </section>
-        <section>
+    <div class="formContainer">
+        <h1>Register And Login</h1>
+        <input type="email" placeholder="email here" id="email" required><br>
+        <input type="password" placeholder="password here" id="password" required><br>
+        <button onclick="signUp()" id="signUp">SignUp</button> <br>
+        <button onclick="signIn()" id="signIp">SignIn</button> <br>
+        <button onclick="signOut()" id="signOut">SignOut</button>
+    </div>
 
-        </section>
-    </main>
+
     <script src="login.js"></script>
 </body>
 

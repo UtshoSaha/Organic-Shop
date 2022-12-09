@@ -1,7 +1,14 @@
 span {
     color: orange;
 }
-.u1 h1{
+
+.formContainer {
+    display: grid;
+    justify-content: center;
+    margin-top: 100px;
+}
+
+.u1 h1 {
     font-size: 38px;
     font-weight: 500;
 }

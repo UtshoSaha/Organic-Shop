@@ -1,25 +1,57 @@
 
-document.getElementById('btn-submit').addEventListener('click', function () {
+var firebaseConfig = {
+    apiKey: "AIzaSyB0illakAqxJ6i3v0XruiOZmzi0WJTW5KA",
+    authDomain: "organic-shop-edb78.firebaseapp.com",
+    projectId: "organic-shop-edb78",
+    storageBucket: "organic-shop-edb78.appspot.com",
+    messagingSenderId: "300842096569",
+    appId: "1:300842096569:web:5b4db1103d63b45eed8868",
+    measurementId: "G-C8Q2HYKHY1"
+};
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
 
-    const emailField = document.getElementById('user-email');
-    const email = emailField.value;
+const auth = firebase.auth();
 
-    const passwordField = document.getElementById('user-password');
-    const password = passwordField.value;
-    console.log(email, password)
+//signup function
+function signUp() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
 
-    if (email === "utsa15-14237@diu.edu.bd" && password === 'utsa1234') {
+    const promise = auth.createUserWithEmailAndPassword(email.value, password.value);
+    //
+    promise.catch(e => alert(e.message));
+    alert("SignUp Successfully");
+}
 
-        window.location.href = 'index.html';
-    }
-    else if (email === "nabid15-13826@diu.edu.bd" && password === 'nabid1234') {
-        window.location.href = 'index.html';
-    }
-    else if (email === "fahim15-13734@diu.edu.bd" && password === 'fahim1234') {
-        window.location.href = 'index.html';
-    }
-    else {
+//signIN function
+function signIn() {
+    var email = document.getElementById("email");
+    var password = document.getElementById("password");
+    const promise = auth.signInWithEmailAndPassword(email.value, password.value);
+    promise.catch(e => alert(e.message));
 
-        alert('wrong email or password')
+
+    window.location.href = '../index.html';
+
+
+
+}
+
+//signOut
+
+function signOut() {
+    auth.signOut();
+    alert("SignOut Successfully from System");
+}
+
+//active user to homepage
+firebase.auth().onAuthStateChanged((user) => {
+    if (user) {
+        var email = user.email;
+        alert("Active user " + email);
+
+    } else {
+        alert("No Active user Found")
     }
 })
