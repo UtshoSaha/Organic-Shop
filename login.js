@@ -32,7 +32,7 @@ function signIn() {
     promise.catch(e => alert(e.message));
 
 
-    window.location.href = '../index.html';
+    window.location.href = '/index.html';
 
 
 
