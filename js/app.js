@@ -9,7 +9,7 @@ const loadProducts = (url) => {
       });
 };
 
-loadProducts('https://organic-server.vercel.app/products');
+loadProducts('https://organic-server-saklainmostak1.vercel.app/products');
 
 
 // show all product in UI
@@ -54,7 +54,7 @@ const addToCart = (id, price) => {
 
 const showProductDetails = (product_id) => {
    // console.log(product_id);
-   fetch(`https://organic-server.vercel.app/product/${product_id}`)
+   fetch(`https://organic-server-saklainmostak1.vercel.app/product/${product_id}`)
       .then((res) => res.json())
       .then((data) => showProductDetailsInModal(data));
 };
